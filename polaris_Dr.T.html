@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>POLARIS — Dr.T</title>
+<style>
+:root {
+  --void: #050812; --stone: #0a0e1a; --tablet: rgba(255,252,235,0.04);
+  --gold: #D4A85A; --amber: #C4924A; --ink: rgba(250,245,230,0.93);
+  --ink-muted: rgba(240,230,210,0.48); --hairline: rgba(255,255,240,0.06);
+  --astro: #D4A85A; --hd: #9b96ff; --num: #589bc8; --cz: #c37341;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  background: var(--void); color: var(--ink);
+  font-family: Georgia, 'Times New Roman', serif;
+  line-height: 1.7; font-size: 15px;
+  -webkit-font-smoothing: antialiased;
+}
+.container { max-width: 780px; margin:0 auto; padding: 60px 24px 100px; }
+
+.header { text-align:center; margin-bottom: 56px; padding-bottom: 40px; border-bottom: 1px solid var(--hairline); }
+.header .sigil { font-size: 40px; color: var(--gold); letter-spacing: 6px; margin-bottom: 12px; }
+.header h1 { font-size: 20px; font-weight: 300; color: var(--ink); letter-spacing: 3px; margin-bottom: 6px; }
+.header .sub { font-size: 12px; color: var(--ink-muted); letter-spacing: 2px; }
+
+.system-section { margin-bottom: 52px; }
+.system-section h2 {
+  font-size: 13px; font-weight: 400; letter-spacing: 3px; text-transform: uppercase;
+  padding-bottom: 8px; border-bottom: 1px solid var(--hairline); margin-bottom: 24px;
+}
+h2.astro { color: var(--astro); } h2.hd { color: var(--hd); }
+h2.num { color: var(--num); } h2.cz { color: var(--cz); }
+
+.card {
+  padding: 18px 22px; margin: 14px 0;
+  border: 1px solid var(--hairline); background: var(--stone);
+  border-radius: 2px;
+}
+.card-label { font-size: 10px; text-transform: uppercase; letter-spacing: 2px; color: var(--gold); margin-bottom: 8px; }
+
+table { width:100%; border-collapse:collapse; font-size:13px; }
+td { padding: 5px 10px; border-bottom: 1px solid var(--hairline); }
+td:first-child { color: var(--ink-muted); }
+.planet-name { color: var(--gold); font-weight: 500; }
+
+.aspect-line { font-size:12px; padding:3px 0; color: var(--ink-muted); }
+.asp-sym { color: var(--gold); margin-right:6px; }
+.asp-orb { color: var(--ink-muted); font-size:11px; }
+
+.gate-chip {
+  display: inline-block; padding: 4px 10px; margin: 3px;
+  border: 1px solid var(--hairline); font-size: 11px;
+  font-family: 'SF Mono', 'Menlo', monospace;
+}
+.gate-num { color: var(--hd); } .gate-line { color: var(--ink-muted); } .gate-planet { color: var(--ink-muted); font-size:9px; margin-left:6px; }
+
+.num-card {
+  display: inline-block; width: 130px; padding: 14px; margin: 6px;
+  border: 1px solid var(--hairline); text-align: center; vertical-align: top;
+}
+.num-value { font-size: 36px; font-weight: 300; color: var(--num); }
+.num-label { font-size: 9px; text-transform: uppercase; letter-spacing: 2px; color: var(--ink-muted); margin-bottom: 4px; }
+.num-desc { font-size: 10px; color: var(--ink-muted); margin-top: 6px; line-height: 1.4; }
+
+.cz-animal { font-size: 28px; color: var(--cz); font-weight: 300; }
+.cz-element-tag { display:inline-block; padding:3px 10px; border:1px solid var(--hairline); font-size:11px; color: var(--cz); margin:6px 0; }
+.cz-traits { font-size:12px; color: var(--ink-muted); margin-top:6px; }
+
+.pillar { font-size:12px; padding:4px 0; color: var(--ink-muted); }
+.pillar-label { color: var(--cz); font-weight:500; font-size:10px; letter-spacing:1px; }
+.pillar-elem { font-size:10px; }
+
+.elem-count { font-size:11px; margin-right:10px; color: var(--ink-muted); }
+.elem-fire { color: #c94f3a; } .elem-earth { color: #8b9a6b; } .elem-air { color: #5b9bd5; } .elem-water { color: #588bb8; }
+
+.footnote {
+  margin-top:72px; padding-top:24px; border-top:1px solid var(--hairline);
+  font-size:10px; color:rgba(240,230,210,0.18); text-align:center; line-height:1.8;
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<header class="header">
+  <div class="sigil">✧</div>
+  <h1>Dr.T</h1>
+  <div class="sub">Pisces Sun · Cancer Moon · Gemini Rising · Ox Spirit</div>
+</header>
+
+<!-- ASTROLOGY -->
+<section class="system-section">
+  <h2 class="astro">✦ Astrology</h2>
+  <div class="card">
+    <div class="card-label">Planetary Positions</div>
+    <table><tr><td class="planet-name">SUN</td><td>Pisces 0°48'</td><td>House 10</td></tr><tr><td class="planet-name">MOON</td><td>Cancer 28°08'</td><td>House 3</td></tr><tr><td class="planet-name">MERCURY</td><td>Aquarius 15°27'</td><td>House 9</td></tr><tr><td class="planet-name">VENUS</td><td>Aquarius 20°19'</td><td>House 10</td></tr><tr><td class="planet-name">MARS</td><td>Libra 4°46'</td><td>House 5</td></tr><tr><td class="planet-name">JUPITER</td><td>Aquarius 6°41'</td><td>House 9</td></tr><tr><td class="planet-name">SATURN</td><td>Aries 5°29'</td><td>House 11</td></tr><tr><td class="planet-name">URANUS</td><td>Aquarius 6°06'</td><td>House 9</td></tr><tr><td class="planet-name">NEPTUNE</td><td>Capricorn 28°39'</td><td>House 9</td></tr><tr><td class="planet-name">PLUTO</td><td>Sagittarius 5°31'</td><td>House 6</td></tr></table>
+  </div>
+  <div class="card">
+    <div class="card-label">House Cusps (Placidus)</div>
+    <table><tr><td>House 1 ASC</td><td>Gemini 18°12'</td></tr><tr><td>House 2</td><td>Cancer 7°26'</td></tr><tr><td>House 3</td><td>Cancer 25°31'</td></tr><tr><td>House 4 IC</td><td>Leo 16°33'</td></tr><tr><td>House 5</td><td>Virgo 15°47'</td></tr><tr><td>House 6</td><td>Libra 29°45'</td></tr><tr><td>House 7 DSC</td><td>Sagittarius 18°12'</td></tr><tr><td>House 8</td><td>Capricorn 7°26'</td></tr><tr><td>House 9</td><td>Capricorn 25°31'</td></tr><tr><td>House 10 MC</td><td>Aquarius 16°33'</td></tr><tr><td>House 11</td><td>Pisces 15°47'</td></tr><tr><td>House 12</td><td>Aries 29°45'</td></tr></table>
+  </div>
+  <div class="card">
+    <div class="card-label">Elements</div>
+    <p style="font-size:13px;"><span class="elem-fire">Fire: 2</span> <span class="elem-earth">Earth: 1</span> <span class="elem-air">Air: 5</span> <span class="elem-water">Water: 2</span></p>
+    <p style="font-size:12px; color:var(--ink-muted); margin-top:8px;">Dominant: <strong style="color:var(--ink);">Air</strong> / Cardinal</p>
+  </div>
+  <div class="card">
+    <div class="card-label">Key Aspects</div>
+    <div class="aspect-line"><span class="asp-sym">☌</span> JUPITER — URANUS <span class="asp-orb">0.57°</span></div><div class="aspect-line"><span class="asp-sym">☌</span> MARS — NORTH_NODE <span class="asp-orb">4.33°</span></div><div class="aspect-line"><span class="asp-sym">☌</span> MERCURY — VENUS <span class="asp-orb">4.87°</span></div><div class="aspect-line"><span class="asp-sym">☌</span> SATURN — SOUTH_NODE <span class="asp-orb">5.05°</span></div><div class="aspect-line"><span class="asp-sym">☌</span> URANUS — NEPTUNE <span class="asp-orb">7.46°</span></div><div class="aspect-line"><span class="asp-sym">☍</span> NORTH_NODE — SOUTH_NODE <span class="asp-orb">0.00°</span></div><div class="aspect-line"><span class="asp-sym">☍</span> MOON — NEPTUNE <span class="asp-orb">0.51°</span></div><div class="aspect-line"><span class="asp-sym">☍</span> MARS — SATURN <span class="asp-orb">0.72°</span></div><div class="aspect-line"><span class="asp-sym">☍</span> MARS — SOUTH_NODE <span class="asp-orb">4.33°</span></div><div class="aspect-line"><span class="asp-sym">☍</span> SATURN — NORTH_NODE <span class="asp-orb">5.05°</span></div><div class="aspect-line"><span class="asp-sym">☍</span> MOON — URANUS <span class="asp-orb">7.97°</span></div><div class="aspect-line"><span class="asp-sym">△</span> SATURN — PLUTO <span class="asp-orb">0.02°</span></div>
+  </div>
+</section>
+
+<!-- HUMAN DESIGN -->
+<section class="system-section">
+  <h2 class="hd">◈ Human Design Gates</h2>
+  <div class="card">
+    <div class="card-label">Activated Gates (Tropical)</div>
+    <div style="line-height:2.2;"><div class="gate-chip"><span class="gate-num">Gate 36</span><span class="gate-line">.6</span><span class="gate-planet">SUN</span></div><div class="gate-chip"><span class="gate-num">Gate 62</span><span class="gate-line">.1</span><span class="gate-planet">MOON</span></div><div class="gate-chip"><span class="gate-num">Gate 33</span><span class="gate-line">.1</span><span class="gate-planet">MERCURY</span></div><div class="gate-chip"><span class="gate-num">Gate 34</span><span class="gate-line">.6</span><span class="gate-planet">VENUS</span></div><div class="gate-chip"><span class="gate-num">Gate 10</span><span class="gate-line">.6</span><span class="gate-planet">MARS</span></div><div class="gate-chip"><span class="gate-num">Gate 32</span><span class="gate-line">.6</span><span class="gate-planet">JUPITER</span></div><div class="gate-chip"><span class="gate-num">Gate 42</span><span class="gate-line">.6</span><span class="gate-planet">SATURN</span></div><div class="gate-chip"><span class="gate-num">Gate 31</span><span class="gate-line">.3</span><span class="gate-planet">URANUS</span></div><div class="gate-chip"><span class="gate-num">Gate 30</span><span class="gate-line">.1</span><span class="gate-planet">NEPTUNE</span></div><div class="gate-chip"><span class="gate-num">Gate 21</span><span class="gate-line">.6</span><span class="gate-planet">PLUTO</span></div><div class="gate-chip"><span class="gate-num">Gate 38</span><span class="gate-line">.2</span><span class="gate-planet">CHIRON</span></div><div class="gate-chip"><span class="gate-num">Gate 9</span><span class="gate-line">.1</span><span class="gate-planet">NORTH_NODE</span></div><div class="gate-chip"><span class="gate-num">Gate 41</span><span class="gate-line">.1</span><span class="gate-planet">SOUTH_NODE</span></div></div>
+  </div>
+</section>
+
+<!-- NUMEROLOGY -->
+<section class="system-section">
+  <h2 class="num">◉ Numerology</h2>
+  <div style="text-align:center;">
+    <div class="num-card"><div class="num-label">Life Path</div><div class="num-value">11</div><div class="num-desc">The Master Intuitive — illumination, spiritual messenger, inspired visionary. Hi...</div></div>
+    <div class="num-card"><div class="num-label">Destiny</div><div class="num-value">6</div><div class="num-desc">The Nurturer — responsible, loving, harmonious, healer. You serve through care....</div></div>
+    <div class="num-card"><div class="num-label">Soul Urge</div><div class="num-value">0</div><div class="num-desc">...</div></div>
+    <div class="num-card"><div class="num-label">Personality</div><div class="num-value">6</div><div class="num-desc">The Nurturer — responsible, loving, harmonious, healer. You serve through care....</div></div>
+    <div class="num-card"><div class="num-label">Maturity</div><div class="num-value">8</div><div class="num-desc">The Powerhouse — ambitious, authoritative, abundant, material mastery. You manif...</div></div>
+    </div>
+  <div class="card" style="margin-top:16px;">
+    <div class="card-label">Karmic Debts</div>
+    <p style="font-size:12px; color:var(--ink-muted);">
+      None detected
+    </p>
+  </div>
+</section>
+
+<!-- CHINESE ZODIAC -->
+<section class="system-section">
+  <h2 class="cz">◎ Chinese Zodiac</h2>
+  <div class="card" style="text-align:center;">
+    
+    <div class="cz-animal">丑 Ox</div>
+    <div class="cz-element-tag">Earth</div>
+    <div class="cz-traits">Diligent, dependable, strong, determined. Patience and hard work define you.</div>
+    
+  </div>
+  <div class="card">
+    <div class="card-label">Four Pillars of Destiny</div>
+    <div class="pillar"><span class="pillar-label">YEAR</span> <span>DingOx</span> <span class="pillar-elem">(Fire/Earth)</span></div><div class="pillar"><span class="pillar-label">MONTH</span> <span>GengTiger</span> <span class="pillar-elem">(Metal/Wood)</span></div><div class="pillar"><span class="pillar-label">DAY</span> <span>WuHorse</span> <span class="pillar-elem">(Earth/Fire)</span></div><div class="pillar"><span class="pillar-label">HOUR</span> <span>GuiSnake</span> <span class="pillar-elem">(Water/Fire)</span></div>
+    <p style="font-size:11px; color:var(--ink-muted); margin-top:8px;">
+      Day Master: <strong style="color:var(--cz);">Wu</strong> (Earth Yang)
+    </p>
+  </div>
+  <div class="card">
+    <div class="card-label">Element Balance</div>
+    <p style="font-size:13px;"><span class="elem-count">Wood: 1</span> <span class="elem-count">Fire: 3</span> <span class="elem-count">Earth: 2</span> <span class="elem-count">Metal: 1</span> <span class="elem-count">Water: 1</span></p>
+    <p style="font-size:11px; color:var(--ink-muted); margin-top:8px;">
+      Lucky elements: <strong style="color:var(--cz);">Wood, Metal, Water</strong>
+    </p>
+  </div>
+</section>
+
+<footer class="footnote">
+  Generated by POLARIS Portal · Cosmos Engine (MIT) · JPL DE421 ephemerides<br>
+  Fire: 2 · Earth: 1 · Air: 5 · Water: 2 · Life Path 11
+</footer>
+
+</div>
+</body>
+</html>
