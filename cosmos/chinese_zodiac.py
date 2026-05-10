@@ -80,9 +80,40 @@ MONTH_STEM_OFFSETS = {
     9: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1],  # Ren
 }
 
-# Month branch index by Gregorian month (approximate solar terms ~4th-8th)
-# Jan → Ox(1), Feb → Tiger(2), Mar → Rabbit(3), ..., Dec → Rat(0)
-MONTH_BRANCH_MAP = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 0]
+# Month branch index by Gregorian month with day cutoff (approximate solar terms)
+# Each entry: (month, cutoff_day, branch_index)
+# Feb 4 = Tiger(2), Mar 6 = Rabbit(3), Apr 5 = Dragon(4), May 6 = Snake(5),
+# Jun 6 = Horse(6), Jul 7 = Goat(7), Aug 8 = Monkey(8), Sep 8 = Rooster(9),
+# Oct 8 = Dog(10), Nov 7 = Pig(11), Dec 7 = Rat(0), Jan 6 = Ox(1)
+SOLAR_TERM_CUTOFFS = [
+    (1, 6, 1),    # Jan 6+ → Ox(1)
+    (2, 4, 2),    # Feb 4+ → Tiger(2)
+    (3, 6, 3),    # Mar 6+ → Rabbit(3)
+    (4, 5, 4),    # Apr 5+ → Dragon(4)
+    (5, 6, 5),    # May 6+ → Snake(5)
+    (6, 6, 6),    # Jun 6+ → Horse(6)
+    (7, 7, 7),    # Jul 7+ → Goat(7)
+    (8, 8, 8),    # Aug 8+ → Monkey(8)
+    (9, 8, 9),    # Sep 8+ → Rooster(9)
+    (10, 8, 10),  # Oct 8+ → Dog(10)
+    (11, 7, 11),  # Nov 7+ → Pig(11)
+    (12, 7, 0),   # Dec 7+ → Rat(0)
+]
+
+def _get_month_branch(month: int, day: int) -> int:
+    """Get the Chinese month branch index for a given Gregorian date.
+    Uses approximate solar term boundaries (~4th-8th of each month).
+    """
+    # Find the cutoff for this month
+    for m, cutoff_day, branch in SOLAR_TERM_CUTOFFS:
+        if m == month:
+            if day >= cutoff_day:
+                return branch
+            else:
+                # Before the cutoff, use previous month's branch
+                prev_idx = (SOLAR_TERM_CUTOFFS.index((m, cutoff_day, branch)) - 1) % 12
+                return SOLAR_TERM_CUTOFFS[prev_idx][2]
+    return 0  # Fallback
 
 # === HOUR PILLAR LOOKUP ===
 # Hour branch = (hour + 1) // 2 % 12
@@ -162,8 +193,8 @@ class ChineseZodiacProfile:
         self.animal = self.year_pillar.branch  # Primary animal sign
 
         # === MONTH PILLAR ===
-        # Month branch is fixed by solar terms (approx by Gregorian month)
-        month_branch = MONTH_BRANCH_MAP[m - 1]
+        # Month branch is fixed by solar terms (cutoff ~4th-8th of each month)
+        month_branch = _get_month_branch(m, d)
         # Month stem depends on year stem
         yr_stem_group = self.year_pillar.stem_idx % 5
         yr_stem = self.year_pillar.stem_idx

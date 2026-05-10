@@ -100,7 +100,7 @@ class NumerologyProfile:
         # Soul Urge / Heart's Desire: vowels only
         soul_parts = [_name_vowel_value(p) for p in self.name_parts]
         soul_raw = sum(reduce_number(p, False) for p in soul_parts)
-        self.soul_urge = reduce_number(soul_raw)
+        self.soul_urge = reduce_number(soul_raw) if soul_raw > 0 else reduce_number(dest_raw)
 
         # Personality: consonants only
         pers_parts = [_name_consonant_value(p) for p in self.name_parts]
