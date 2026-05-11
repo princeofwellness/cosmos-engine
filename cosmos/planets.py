@@ -22,16 +22,42 @@ _ts = None
 _planets = None
 
 
-def _init_ephemeris(ephemeris_path: str = "/tmp/hd-research/de421.bsp"):
+import os
+
+def _init_ephemeris(ephemeris_path: str = None):
     """Initialize Skyfield with JPL ephemeris file.
     
     Args:
         ephemeris_path: Path to .bsp ephemeris file.
-                       DE421 covers 1900-2050. DE440 covers 1550-2650.
+                       If None, checks COSMOS_EPHEMERIS env var,
+                       then common paths, then defaults.
     """
     global _planets, _ts
     if _planets is not None:
         return
+    
+    if ephemeris_path is None:
+        # Check environment variable
+        ephemeris_path = os.environ.get("COSMOS_EPHEMERIS", "")
+    
+    if not ephemeris_path or not os.path.exists(ephemeris_path):
+        # Try common locations
+        candidates = [
+            os.path.join(os.path.dirname(__file__), "..", "..", "de421.bsp"),
+            os.path.join(os.path.dirname(__file__), "..", "de421.bsp"),
+            "/tmp/de421.bsp",
+            "/tmp/hd-research/de421.bsp",
+        ]
+        for c in candidates:
+            if os.path.exists(c):
+                ephemeris_path = c
+                break
+    
+    if not ephemeris_path or not os.path.exists(ephemeris_path):
+        raise FileNotFoundError(
+            f"JPL ephemeris not found. Set COSMOS_EPHEMERIS env var "
+            f"or place de421.bsp in project root."
+        )
     
     _planets = _loader(ephemeris_path)
     _ts = _loader.timescale()
