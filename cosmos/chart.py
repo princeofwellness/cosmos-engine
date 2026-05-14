@@ -107,7 +107,7 @@ class Chart:
         # Dignities
         self.dignities = {}
         for name in self.planets.positions:
-            if name in RULERSHIP:
+            if name in RULERSHIP.values():
                 sign = self.planet_signs[name]["sign"]
                 dignities = []
                 
